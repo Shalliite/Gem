@@ -2,4 +2,5 @@
 
 BACKEND
 
--Login, Change pass
+-Login, Change password, Store login infos
+-Chats, Chat groups
