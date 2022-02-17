@@ -1,0 +1,10 @@
+16.02.2022.
+Divided responsibilities among all members of the group:
+Alisa - Databases
+Alise - Databases, (Frontend?)
+Martynas - C# backend programming (Login, Chat)
+Deivids - C# backend programming (Login, Chat)
+
+17.02.2022.
+Created Database
+Added Person class with properties needed to store in database. Will be used in login, ...
