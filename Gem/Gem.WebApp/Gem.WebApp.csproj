@@ -6,8 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Gem.Backend\Gem.Backend.csproj" />
-  </ItemGroup>
-
 </Project>
