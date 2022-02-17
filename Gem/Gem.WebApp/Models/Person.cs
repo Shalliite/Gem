@@ -15,14 +15,21 @@ namespace Gem.Backend.Login
         {
             SUCCESS = 0,
             CANNOT_BE_NULL,
-            PASSWORD_TOO_SHORT
+            PASSWORD_TOO_SHORT,
+            INCORRECT_EMAIL_FORMAT
         }
-        private int minimumPasswordLength = 5;
+        public enum Status
+        {
+            OFFLINE = 0,
+            ONLINE
+        }
+        private static int minimumPasswordLength = 5;
         public string FirstName { get; private set; } = null;
         public string MiddleName { get; private set; } = null;
         public string LastName { get; private set; } = null;
-        public string Username { get; private set; } = null;
+        public string Email { get; private set; } = null;
         public string Password { get; private set; } = null;
+        public Status ConnectionStatus { get; private set; }
         public ReturnCode SetFirstName(string firstName)
         {
             if (firstName == null)
@@ -41,11 +48,13 @@ namespace Gem.Backend.Login
             LastName = lastName;
             return ReturnCode.SUCCESS;
         }
-        public ReturnCode SetUsername(string username)
+        public ReturnCode SetEmail(string email)
         {
-            if (username == null)
+            if (email == null)
                 return ReturnCode.CANNOT_BE_NULL;
-            Username = username;
+            if (!email.Contains('@'))
+                return ReturnCode.INCORRECT_EMAIL_FORMAT;
+            Email = email;
             return ReturnCode.SUCCESS;
         }
         public ReturnCode SetPassword(string password)
@@ -57,5 +66,7 @@ namespace Gem.Backend.Login
             Password = password;
             return ReturnCode.SUCCESS;
         }
+        public Status SetConnectionStatus(Status status)
+            => ConnectionStatus = status;
     }
 }
