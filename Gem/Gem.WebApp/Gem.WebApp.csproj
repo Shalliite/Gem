@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Remove="wwwroot\gem-logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\newcss.css" />
+    <None Include="wwwroot\gem-logo.png" />
   </ItemGroup>
 
   <ItemGroup>
