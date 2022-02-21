@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Gem.WebApp.Models.RegistrationModel
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<div class="logo-container">
+    <img class="logo" src="~/gem-logo.png" alt="logo" />
+</div>
+<div class="container">
+    @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
+    {
+        @Html.ValidationSummary()
+        @Html.LabelFor(a => a.FirstName)
+        @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(a => a.MiddleName)
+        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(a => a.LastName)
+        @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(a => a.Email)
+        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(a => a.Password)
+        @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password" })
+        <br />
+        @Html.LabelFor(a => a.ConfirmPassword)
+        @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password" })
+        <br />
+        <input type="submit" value="Register" class="btn-primary" />
+    }
+</div>

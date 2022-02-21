@@ -3,31 +3,31 @@
 }
 
 
-  <div class="logo-container">
-     <img class="logo" src="~/gem-logo.png" alt="logo" />
-  </div>
-  <form action="chat.html" method="post" class="form">
-      <div class="container">
+<div class="logo-container">
+    <img class="logo" src="~/gem-logo.png" alt="logo" />
+</div>
+<form action="chat.html" method="post" class="form">
+    <div class="container">
 
         <label for="uname"><b>Username</b></label>
-        <input class = "input" type="text" placeholder="Enter Username" name="uname">
+        <input class="input" type="text" placeholder="Enter Username" name="uname">
 
         <br>
 
         <label for="psw"><b>Password</b></label>
         <input class="input" type="password" placeholder="Enter Password" name="psw">
 
-        <br>    
-    
+        <br>
+
         <a class="input-button" asp-area="" asp-controller="Home" asp-action="Chat">Login</a>
 
-        <a class="input-button" asp-area="" asp-controller="Home" asp-action="Registration">Register</a>
+        <a class="input-button" asp-area="" asp-controller="Registration" asp-action="Index">Register</a>
         <br>
         <a class="input-button" asp-area="" asp-controller="Home" asp-action="FBlogin">Login with Facebook</a>
-  
-      </div>
 
-      <div class="container" > 
-          <span class="psw">Forgot <a href="recoverP.html">password?</a></span>
-      </div>
-  </form> 
+    </div>
+
+    <div class="container">
+        <span class="psw">Forgot <a href="recoverP.html">password?</a></span>
+    </div>
+</form>
