@@ -25,7 +25,14 @@ namespace Gem.WebApp.Controllers
             {
                 MapUsers mapUsers = new MapUsers();
                 User user = mapUsers.Map(registerDetails);
-                _userRepository.Add(user);
+                if (_userRepository.IsRegistered(user))
+                {
+                    ViewBag.Message = $"{user.Email} is already registered!";
+                }
+                else
+                {
+                    _userRepository.Add(user);
+                }
             }
             return View("Index");
         }
