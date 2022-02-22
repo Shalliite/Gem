@@ -14,5 +14,9 @@ namespace Gem.WebApp.Services
             dbc.Users.Add(user);
             dbc.SaveChanges();
         }
+        public bool Contains(User user)
+        {
+            return dbc.Users.Find(user.Email) != null;
+        }
     }
 }

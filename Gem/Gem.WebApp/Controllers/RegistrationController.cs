@@ -25,6 +25,8 @@ namespace Gem.WebApp.Controllers
             {
                 MapUsers mapUsers = new MapUsers();
                 User user = mapUsers.Map(registerDetails);
+                if (_userRepository.Contains(user))
+                    throw new Exception("email contains");
                 _userRepository.Add(user);
             }
             return View("Index");
