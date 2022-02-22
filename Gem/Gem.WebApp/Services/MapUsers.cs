@@ -13,7 +13,7 @@ namespace Gem.WebApp.Services
                 Name = rm.FirstName,
                 Surname = rm.LastName,
                 MiddleName = rm.MiddleName,
-                Password = rm.Password
+                Password = PasswordHash.Hash(rm).Password
             };
         }
     }
