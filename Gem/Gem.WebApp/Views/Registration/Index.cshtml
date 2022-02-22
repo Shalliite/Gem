@@ -14,16 +14,16 @@
     {
         @Html.ValidationSummary()
         @Html.LabelFor(a => a.FirstName)
-        @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder = "Enter first name" })
         <br />
         @Html.LabelFor(a => a.MiddleName)
-        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control", placeholder = "Enter middle name"  })
         <br />
         @Html.LabelFor(a => a.LastName)
-        @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control", placeholder = "Enter last name" })
         <br />
         @Html.LabelFor(a => a.Email)
-        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control", placeholder = "Enter email: example@text.com" })
         <br />
         @Html.LabelFor(a => a.Password)
         @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password" })
@@ -32,5 +32,9 @@
         @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password" })
         <br />
         <input type="submit" value="Register" class="btn-primary" />
+    }
+    @if (ViewBag.Message != null)
+    {
+        <label>@ViewBag.Message</label>
     }
 </div>
