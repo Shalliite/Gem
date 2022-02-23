@@ -23,9 +23,24 @@ namespace Gem.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                MapUsers mapUsers = new MapUsers();
-                User user = mapUsers.Map(registerDetails);
-                _userRepository.Add(user);
+                if (registerDetails.Password != registerDetails.ConfirmPassword)
+                {
+                    ViewBag.Message = "Passwords do not match. Please retype your password.";
+                }
+                else
+                {
+                    MapUsers mapUsers = new MapUsers();
+                    User user = mapUsers.Map(registerDetails);
+                    if (_userRepository.IsRegistered(user))
+                    {
+                        ViewBag.Message = $"{user.Email} is already registered!";
+                    }
+
+                    else
+                    {
+                        _userRepository.Add(user);
+                    }
+                }
             }
             return View("Index");
         }
