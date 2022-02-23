@@ -1,3 +1,18 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 #client_id{
     text-align: center;
     margin: auto;
@@ -47,4 +62,8 @@ a:link {
 .form {
     margin: auto;
     text-align: center;
+}
+
+.hide, .also-hide{
+    display:none;
 }

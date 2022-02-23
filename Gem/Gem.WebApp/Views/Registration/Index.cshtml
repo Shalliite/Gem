@@ -28,12 +28,14 @@
         @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control larger", placeholder="Enter Email (example@gmail.com)" })
         <br />
         @Html.LabelFor(a => a.Password)
-        @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password", placeholder="(at least 6 characters long)" })
+        @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password", placeholder="(at least 6 char. long)" })
         <text>&nbsp;</text><text>&nbsp;</text>        
         @Html.LabelFor(a => a.ConfirmPassword)
         @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password", placeholder="Confirm Your Password" })
         <br />
         <input type="submit" value="Register" class="btn-primary" />
+        <br/>
+        <a class="input-button backlink" asp-area="" asp-controller="Home" asp-action="Index">Back to Login</a>
         <style>
             .form-control{
                 width:200px;
@@ -62,11 +64,26 @@
             .btn-primary{
                 background-color: rebeccapurple;
                 border-color:purple;
+                margin-top:10px;
+                margin-bottom:10px;
+                border-radius:10px;
+                width:100px;
+                height:40px;
             }
             .logo{
                 width:200px;
                 height:200px;                
             }
+            .backlink{
+                margin-top:10px;
+                paddind-top:10px;
+            }
+            .form-control{
+                font-size:smaller;
+            }
+            @*label{
+                font-weight:bold;
+            }*@
         </style>
         
     }
