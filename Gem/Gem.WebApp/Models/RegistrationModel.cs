@@ -28,12 +28,13 @@ namespace Gem.WebApp.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        [MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
+        [StringLength(18, MinimumLength = 8, ErrorMessage = "Password should be 8-18 characters long")]
         public string Password { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
     }
 }
