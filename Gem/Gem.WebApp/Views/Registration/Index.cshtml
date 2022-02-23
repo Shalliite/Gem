@@ -9,28 +9,65 @@
 <div class="logo-container">
     <img class="logo" src="~/gem-logo.png" alt="logo" />
 </div>
-<div class="container">
+<div class="registration-container">
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
     {
         @Html.ValidationSummary()
         @Html.LabelFor(a => a.FirstName)
         @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control" })
-        <br />
+        <text>&nbsp;</text><text>&nbsp;</text>        
+        <span id="middle-span", class="">
         @Html.LabelFor(a => a.MiddleName)
-        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control smaller" })
+        </span>
         <br />
-        @Html.LabelFor(a => a.LastName)
+        @Html.LabelFor(a => a.LastName)      
         @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control" })
-        <br />
+        <text>&nbsp;</text><text>&nbsp;</text>        
         @Html.LabelFor(a => a.Email)
-        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control" })
+        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control larger" })
         <br />
         @Html.LabelFor(a => a.Password)
         @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password" })
-        <br />
+        <text>&nbsp;</text><text>&nbsp;</text>        
         @Html.LabelFor(a => a.ConfirmPassword)
         @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password" })
         <br />
         <input type="submit" value="Register" class="btn-primary" />
+        <style>
+            .form-control{
+                width:200px;
+                display:inline;               
+                margin-bottom: 10px;
+                text-align:center;                
+            }
+            .registration-container{
+                width:800px;
+                margin:auto;
+                display:block;
+                text-align:center;                        
+                border: 1px purple;
+                padding: 10px;
+                justify-content:flex-start;
+            }
+            .hide{
+                display:none;
+            }
+            .larger{
+                width:280px;
+            }
+            .smaller{
+                width:180px;
+            }
+            .btn-primary{
+                background-color: rebeccapurple;
+                border-color:purple;
+            }
+            .logo{
+                width:200px;
+                height:200px;                
+            }
+        </style>
+        
     }
 </div>
