@@ -7,7 +7,7 @@
 }
 
 <div class="logo-container">
-    <img class="logo" src="~/gem-logo.png" alt="logo" />
+    <img class="logo" src='@Url.Content("~/gem-logo.png")' alt="logo" />
 </div>
 <div class="registration-container">
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))

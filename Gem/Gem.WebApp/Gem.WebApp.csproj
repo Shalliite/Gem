@@ -12,7 +12,9 @@
 
   <ItemGroup>
     <None Include="wwwroot\css\gemcss.css" />
-    <None Include="wwwroot\gem-logo.png" />
+    <None Include="wwwroot\gem-logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
