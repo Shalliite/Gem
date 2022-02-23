@@ -12,27 +12,59 @@
 <div class="registration-container">
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
     {
-        @Html.ValidationSummary()
-        @Html.LabelFor(a => a.FirstName)
-        @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder="Enter First Name" })
-        <text>&nbsp;</text><text>&nbsp;</text>        
-        <span id="middle-span", class="">
-        @Html.LabelFor(a => a.MiddleName)
-        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control smaller", placeholder="Enter Middle Name" })
-        </span>
+        @if (ViewBag.Message != null)
+        {
+            <label class = "text-danger">@ViewBag.Message</label>
+        }
         <br />
-        @Html.LabelFor(a => a.LastName)      
+        <br />
+        @Html.LabelFor(a => a.FirstName)
+        <br />
+        @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder="Enter First Name" })
+        <br />
+        @Html.ValidationMessageFor(a => a.FirstName, "", new { @class = "text-danger"});
+        <br />
+
+
+        @Html.LabelFor(a => a.MiddleName)
+        <br />
+        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control smaller", placeholder="Enter Middle Name" })
+        <br />
+        @Html.ValidationMessageFor(a => a.MiddleName, "", new { @class = "text-danger"});
+        <br />
+
+
+        @Html.LabelFor(a => a.LastName)
+        <br />
         @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control", placeholder="Enter Last Name" })
-        <text>&nbsp;</text><text>&nbsp;</text>        
+        <br />
+        @Html.ValidationMessageFor(a => a.LastName, "", new { @class = "text-danger"});
+        <br />
+        
+
         @Html.LabelFor(a => a.Email)
+        <br />
         @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control larger", placeholder="Enter Email (example@gmail.com)" })
         <br />
+        @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger"});
+        <br />
+
+
         @Html.LabelFor(a => a.Password)
+        <br />
         @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password", placeholder="(at least 6 characters long)" })
-        <text>&nbsp;</text><text>&nbsp;</text>        
+        <br />
+        @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger"});
+        <br />
+        
+
         @Html.LabelFor(a => a.ConfirmPassword)
+        <br />
         @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password", placeholder="Confirm Your Password" })
         <br />
+        @Html.ValidationMessageFor(a => a.ConfirmPassword, "", new { @class = "text-danger"});
+        <br />
+
         <input type="submit" value="Register" class="btn-primary" />
         <style>
             .form-control{
@@ -69,9 +101,5 @@
             }
         </style>
         
-    }
-    @if (ViewBag.Message != null)
-    {
-        <label>@ViewBag.Message</label>
     }
 </div>
