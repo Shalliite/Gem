@@ -14,5 +14,17 @@ namespace Gem.WebApp.Services
             dbc.Users.Add(user);
             dbc.SaveChanges();
         }
+        public bool IsRegistered(User user)
+        {
+            if(dbc.Users.Where(x => x.Email == user.Email).FirstOrDefault() == default(User))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
     }
 }
