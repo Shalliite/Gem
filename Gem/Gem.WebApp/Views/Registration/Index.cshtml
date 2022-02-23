@@ -9,29 +9,66 @@
 <div class="logo-container">
     <img class="logo" src="~/gem-logo.png" alt="logo" />
 </div>
-<div class="container">
+<div class="registration-container">
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
     {
         @Html.ValidationSummary()
         @Html.LabelFor(a => a.FirstName)
-        @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder = "Enter first name" })
-        <br />
+        @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder="Enter First Name" })
+        <text>&nbsp;</text><text>&nbsp;</text>        
+        <span id="middle-span", class="">
         @Html.LabelFor(a => a.MiddleName)
-        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control", placeholder = "Enter middle name"  })
+        @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control smaller", placeholder="Enter Middle Name" })
+        </span>
         <br />
-        @Html.LabelFor(a => a.LastName)
-        @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control", placeholder = "Enter last name" })
-        <br />
+        @Html.LabelFor(a => a.LastName)      
+        @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control", placeholder="Enter Last Name" })
+        <text>&nbsp;</text><text>&nbsp;</text>        
         @Html.LabelFor(a => a.Email)
-        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control", placeholder = "Enter email: example@text.com" })
+        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control larger", placeholder="Enter Email (example@gmail.com)" })
         <br />
         @Html.LabelFor(a => a.Password)
-        @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password" })
-        <br />
+        @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password", placeholder="(at least 6 characters long)" })
+        <text>&nbsp;</text><text>&nbsp;</text>        
         @Html.LabelFor(a => a.ConfirmPassword)
-        @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password" })
+        @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password", placeholder="Confirm Your Password" })
         <br />
         <input type="submit" value="Register" class="btn-primary" />
+        <style>
+            .form-control{
+                width:200px;
+                display:inline;               
+                margin-bottom: 10px;
+                text-align:center;                
+            }
+            .registration-container{
+                width:800px;
+                margin:auto;
+                display:block;
+                text-align:center;                        
+                border: 1px purple;
+                padding: 10px;
+                justify-content:flex-start;
+            }
+            .hide{
+                display:none;
+            }
+            .larger{
+                width:280px;
+            }
+            .smaller{
+                width:180px;
+            }
+            .btn-primary{
+                background-color: rebeccapurple;
+                border-color:purple;
+            }
+            .logo{
+                width:200px;
+                height:200px;                
+            }
+        </style>
+        
     }
     @if (ViewBag.Message != null)
     {

@@ -38,6 +38,7 @@ namespace Gem.WebApp.Controllers
 
                     else
                     {
+                        ViewBag.Message = "User registration is successful!";
                         _userRepository.Add(user);
                     }
                 }
