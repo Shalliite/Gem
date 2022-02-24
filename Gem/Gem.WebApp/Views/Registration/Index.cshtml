@@ -10,30 +10,48 @@
     <img class="logo" src="~/gem-logo.png" alt="logo" />
 </div>
 <div class="registration-container">
-    @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
+    @using (Html.BeginForm("Index", "Registration", FormMethod.Post))
     {
-        @Html.ValidationSummary()
-        @Html.LabelFor(a => a.FirstName)
+        @if (ViewBag.Message != null)
+        {
+            <label class = "text-danger">@ViewBag.Message</label>
+        }
+        <br />
+
+        @Html.LabelFor(a => a.FirstName)<text>*      </text>
         @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder="Enter First Name" })
-        <text>&nbsp;</text><text>&nbsp;</text>        
-        <span id="middle-span", class="">
-        @Html.LabelFor(a => a.MiddleName)
+        @Html.ValidationMessageFor(a => a.FirstName, "", new { @class = "text-danger"});        
+        
+        <br />
+        @Html.LabelFor(a => a.MiddleName)<text>      </text>
         @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control smaller", placeholder="Enter Middle Name" })
-        </span>
+        @Html.ValidationMessageFor(a => a.MiddleName, "", new { @class = "text-danger"});
         <br />
-        @Html.LabelFor(a => a.LastName)      
+
+        @Html.LabelFor(a => a.LastName)<text>*      </text>  
         @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control", placeholder="Enter Last Name" })
-        <text>&nbsp;</text><text>&nbsp;</text>        
-        @Html.LabelFor(a => a.Email)
-        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control larger", placeholder="Enter Email (example@gmail.com)" })
+        @Html.ValidationMessageFor(a => a.LastName, "", new { @class = "text-danger"});
+               
         <br />
-        @Html.LabelFor(a => a.Password)
-        @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password", placeholder="(at least 6 characters long)" })
-        <text>&nbsp;</text><text>&nbsp;</text>        
-        @Html.LabelFor(a => a.ConfirmPassword)
+        @Html.LabelFor(a => a.Email)<text>*</text>        
+        @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control larger", placeholder="(me@example.com, max 50 characters)" })
+        @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger"});
+
+        <br />
+        @Html.LabelFor(a => a.Password)<text>*      </text>
+        @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password", placeholder="(8-18 characters long)" })
+        @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger"});
+        
+        <br />
+        @Html.LabelFor(a => a.ConfirmPassword)<text>*  </text>
         @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password", placeholder="Confirm Your Password" })
+        @Html.ValidationMessageFor(a => a.ConfirmPassword, "", new { @class = "text-danger"});
         <br />
+        
+        <p class="star">* - mandatory fields</p>
         <input type="submit" value="Register" class="btn-primary" />
+        <br/>
+        <a class="input-button backlink" asp-area="" asp-controller="Home" asp-action="Index">Back to Login</a>
         <style>
             .form-control{
                 width:200px;
@@ -62,16 +80,32 @@
             .btn-primary{
                 background-color: rebeccapurple;
                 border-color:purple;
+                margin-top:10px;
+                margin-bottom:10px;
+                border-radius:10px;
+                width:100px;
+                height:40px;
             }
             .logo{
                 width:200px;
                 height:200px;                
             }
-        </style>
-        
-    }
-    @if (ViewBag.Message != null)
-    {
-        <label>@ViewBag.Message</label>
+            .backlink{
+                margin-top:10px;
+                paddind-top:10px;
+            }
+            .form-control{
+                font-size:smaller;
+            }
+            .star{
+                text-align:center;
+                font-size:smaller;
+            }
+            .text-danger{
+                font-size:10px;
+                margin:0;
+                padding:0;
+            }
+        </style>        
     }
 </div>
