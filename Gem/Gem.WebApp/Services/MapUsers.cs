@@ -13,7 +13,15 @@ namespace Gem.WebApp.Services
                 Name = rm.FirstName,
                 Surname = rm.LastName,
                 MiddleName = rm.MiddleName,
-                Password = PasswordHash.Hash(rm).Password
+                Password = PasswordHash.Hash(rm.Password)
+            };
+        }
+        public User Map(LoginModel lm)
+        {
+            return new User
+            {
+                Email = lm.Email,
+                Password = PasswordHash.Hash(lm.Password)
             };
         }
     }

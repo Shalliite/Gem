@@ -8,19 +8,19 @@ namespace Gem.WebApp.Services
 {
     public static class PasswordHash
     {
-        public static RegistrationModel Hash(RegistrationModel rm)
+        public static string Hash(string password)
         {
-            string password = rm.Password;
+            string password1 = password;
             byte[] salt = new byte[0];
 
             string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
+                password: password1,
                 salt: salt,
                 prf: KeyDerivationPrf.HMACSHA256,
                 iterationCount: 100000,
                 numBytesRequested: 256 / 8));
-            rm.Password = hashed;
-            return rm;
+            password = hashed;
+            return password;
         }
     }
 }
