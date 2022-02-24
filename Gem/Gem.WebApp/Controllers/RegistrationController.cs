@@ -19,7 +19,8 @@ namespace Gem.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegistrationModel registerDetails)
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(RegistrationModel registerDetails)
         {
             if (ModelState.IsValid)
             {
@@ -28,15 +29,18 @@ namespace Gem.WebApp.Controllers
                 if (_userRepository.IsRegistered(user))
                 {
                     ViewBag.Message = $"{user.Email} is already registered!";
+                    return View(registerDetails);
                 }
-
                 else
                 {
-                    ViewBag.Message = "User registration is successful!";
                     _userRepository.Add(user);
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            return View("Index");
+            else
+            {
+                return View(registerDetails);
+            }
         }
     }
 }
