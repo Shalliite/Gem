@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\newcss.css" />
+    <None Include="wwwroot\css\gemcss.css" />
     <None Include="wwwroot\gem-logo.png" />
   </ItemGroup>
 
