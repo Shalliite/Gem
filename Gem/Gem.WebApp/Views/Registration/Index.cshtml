@@ -13,7 +13,7 @@
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
     {
         @Html.ValidationSummary()
-        @Html.LabelFor(a => a.FirstName)
+        @Html.LabelFor(a => a.FirstName)<text>*</text>
         @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder="Enter First Name" })
         <text>&nbsp;</text><text>&nbsp;</text>        
         <span id="middle-span", class="">
@@ -21,19 +21,22 @@
         @Html.TextBoxFor(a => a.MiddleName, null, new { @class = "form-control smaller", placeholder="Enter Middle Name" })
         </span>
         <br />
-        @Html.LabelFor(a => a.LastName)      
+        @Html.LabelFor(a => a.LastName)<text>*</text>    
         @Html.TextBoxFor(a => a.LastName, null, new { @class = "form-control", placeholder="Enter Last Name" })
         <text>&nbsp;</text><text>&nbsp;</text>        
-        @Html.LabelFor(a => a.Email)
+        @Html.LabelFor(a => a.Email)<text>*</text>
         @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control larger", placeholder="Enter Email (example@gmail.com)" })
         <br />
-        @Html.LabelFor(a => a.Password)
+        @Html.LabelFor(a => a.Password)<text>*</text>
         @Html.TextBoxFor(a => a.Password, null, new { @class = "form-control", type = "password", placeholder="(at least 6 characters long)" })
         <text>&nbsp;</text><text>&nbsp;</text>        
-        @Html.LabelFor(a => a.ConfirmPassword)
+        @Html.LabelFor(a => a.ConfirmPassword)<text>*</text>
         @Html.TextBoxFor(a => a.ConfirmPassword, null, new { @class = "form-control", type = "password", placeholder="Confirm Your Password" })
         <br />
+        <p class="star">* - mandatory fields</p>
         <input type="submit" value="Register" class="btn-primary" />
+        <br/>
+        <a class="input-button backlink" asp-area="" asp-controller="Home" asp-action="Index">Back to Login</a>
         <style>
             .form-control{
                 width:200px;
@@ -62,13 +65,28 @@
             .btn-primary{
                 background-color: rebeccapurple;
                 border-color:purple;
+                margin-top:10px;
+                margin-bottom:10px;
+                border-radius:10px;
+                width:100px;
+                height:40px;
             }
             .logo{
                 width:200px;
                 height:200px;                
             }
-        </style>
-        
+            .backlink{
+                margin-top:10px;
+                paddind-top:10px;
+            }
+            .form-control{
+                font-size:smaller;
+            }
+            .star{
+                text-align:center;
+                font-size:smaller;
+            }
+        </style>        
     }
     @if (ViewBag.Message != null)
     {
