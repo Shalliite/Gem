@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Gem.WebApp.Models.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="logo-container">
+    <img class="logo" src="~/gem-logo.png" alt="logo" />
+</div>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @if (ViewBag.Message != null)
+    {
+        <label>@ViewBag.Message</label>
+    }
+    <br />
+    @Html.LabelFor(a => a.Email)
+    <br />
+    @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger"})
+
+    <br />
+    @Html.LabelFor(a => a.Password)
+    <br />
+    @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger"})
+
+    <br />
+    <input type="submit" , value="Login" />
+
+    <br />
+    <a class="input-button" asp-area="" asp-controller="Account" asp-action="Registration">Register new user</a>
+}

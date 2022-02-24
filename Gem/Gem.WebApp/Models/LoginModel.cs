@@ -6,6 +6,7 @@ namespace Gem.WebApp.Models
     {
         [Required]
         [Display(Name = "Enter your email")]
+
         public string Email { get; set; }
         [Required]
         [Display(Name = "Enter your password")]

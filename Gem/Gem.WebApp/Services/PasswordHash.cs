@@ -8,6 +8,11 @@ namespace Gem.WebApp.Services
 {
     public static class PasswordHash
     {
+        /// <summary>
+        /// This static function is used to securely hash password.
+        /// </summary>
+        /// <param name="password">Password you want to hash</param>
+        /// <returns>Hashed password</returns>
         public static string Hash(string password)
         {
             string password1 = password;

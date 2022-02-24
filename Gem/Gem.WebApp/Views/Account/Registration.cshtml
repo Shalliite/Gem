@@ -10,7 +10,7 @@
     <img class="logo" src="~/gem-logo.png" alt="logo" />
 </div>
 <div class="registration-container">
-    @using (Html.BeginForm("Index", "Registration", FormMethod.Post))
+    @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
     {
         @if (ViewBag.Message != null)
         {
@@ -51,7 +51,7 @@
         <p class="star">* - mandatory fields</p>
         <input type="submit" value="Register" class="btn-primary" />
         <br/>
-        <a class="input-button backlink" asp-area="" asp-controller="Home" asp-action="Index">Back to Login</a>
+        <a class="input-button backlink" asp-area="" asp-controller="Account" asp-action="Login">Back to Login</a>
  
     }
 </div>

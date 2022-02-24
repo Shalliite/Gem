@@ -1,25 +1,32 @@
-﻿using Gem.WebApp.Migrations;
+﻿using Microsoft.AspNetCore.Mvc;
 using Gem.WebApp.Models;
 using Gem.WebApp.Services;
-using Microsoft.AspNetCore.Mvc;
+using Gem.WebApp.Migrations;
 
 namespace Gem.WebApp.Controllers
 {
-    public class LoginController : Controller
+    public class AccountController : Controller
     {
         private UserRepository _userRepository;
-        public LoginController(ApplicationDbContext adbc)
+        public AccountController(ApplicationDbContext adbc)
         {
             _userRepository = new UserRepository(adbc);
         }
+
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Registration()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Index(LoginModel loginInfo)
+        public IActionResult Login(LoginModel loginInfo)
         {
             if (ModelState.IsValid)
             {
@@ -42,6 +49,26 @@ namespace Gem.WebApp.Controllers
                 }
             }
             return View(loginInfo);
+        }
+
+        [HttpPost]
+        public IActionResult Registration(RegistrationModel registerDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                MapUsers mapUsers = new MapUsers();
+                User user = mapUsers.Map(registerDetails);
+                if (_userRepository.IsRegistered(user.Email))
+                {
+                    ViewBag.Message = $"{user.Email} is already registered!";
+                }
+                else
+                {
+                    _userRepository.Add(user);
+                    return RedirectToAction("Login");
+                }
+            }
+            return View(registerDetails);
         }
     }
 }
