@@ -1,6 +1,19 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@
+@model Gem.WebApp.Models.LoginModel
 @{
+}
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    @Html.LabelFor(a => a.Email)
+    @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.Email)
+
+    @Html.LabelFor(a => a.Password)
+    @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(a => a.Password)
+
+    <input type = "submit", value = "Login"/>
 }
