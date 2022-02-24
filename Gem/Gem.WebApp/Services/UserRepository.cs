@@ -24,7 +24,6 @@ namespace Gem.WebApp.Services
             {
                 return true;
             }
-
         }
     }
 }
