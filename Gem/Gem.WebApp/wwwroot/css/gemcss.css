@@ -37,7 +37,7 @@ body{
 }
 
 .input-button{
-    padding:1-px;
+    padding:1px;
 }
 
 a:link {
@@ -56,7 +56,7 @@ a:link {
     text-align: center;
 }
 
-.registration-container {
+.registration-container, .login-container {
     width: 800px;
     margin: auto;
     display: block;
@@ -109,4 +109,13 @@ a:link {
 
 .text-danger {
     font-size: 10px;
+}
+
+.btn-primary:hover {
+    background-color: darkviolet;
+    border-color: purple;
+}
+
+.first-login{
+    text-align:center;
 }
