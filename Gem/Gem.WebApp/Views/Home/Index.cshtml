@@ -1,33 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Welcome to the Gem";
 }
-
 
 <div class="logo-container">
     <img class="logo" src="~/gem-logo.png" alt="logo" />
 </div>
-<form action="chat.html" method="post" class="form">
-    <div class="container">
+<h1>Gem</h1>
+<div class = "about-project">
+    <h3>Gem – free, simple and secure messaging application. Staying in touch has never been easier
+        – send private messages to your friends or create a group chat for your family or colleagues. 
+        Group chats are perfect for discussing your favourite movies or sharing family events, 
+        jokes and photos. Express yourself with your unique avatar and stay connected!
+    </h3>
 
-        <label for="uname"><b>Username</b></label>
-        <input class="input" type="text" placeholder="Enter Username" name="uname">
-
-        <br>
-
-        <label for="psw"><b>Password</b></label>
-        <input class="input" type="password" placeholder="Enter Password" name="psw">
-
-        <br>
-
-        <a class="input-button" asp-area="" asp-controller="Home" asp-action="Chat">Login</a>
-
-        <a class="input-button" asp-area="" asp-controller="Registration" asp-action="Index">Register</a>
-        <br>
-        <a class="input-button" asp-area="" asp-controller="Home" asp-action="FBlogin">Login with Facebook</a>
-
-    </div>
-
-    <div class="container">
-        <span class="psw">Forgot <a href="recoverP.html">password?</a></span>
-    </div>
-</form>
+</div>
+<h3 class= "first-login">
+<a class="input-button backlink" asp-area="" asp-controller="Account" asp-action="Login">Sign In</a>
+</h3>

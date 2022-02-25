@@ -1,0 +1,121 @@
+#client_id{
+    text-align: center;
+    margin: auto;
+    border: 3px solid purple;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+body{
+    background-color: #f7f7f2
+}
+
+.login-form{
+    padding: 20px;
+    width: 300px;
+    margin:auto;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+
+}
+
+.logo-container{
+    margin:auto;
+    text-align: center;
+}
+
+.logo{
+    margin:auto;
+    text-align: center;
+    height: 300px;
+}
+
+.input{
+    padding:5px;
+}
+
+.input-button{
+    padding:1px;
+}
+
+a:link {
+  color: purple;
+}
+
+.form {
+    margin: auto;
+    text-align: center;
+}
+
+.form-control {
+    width: 200px;
+    display: inline;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.registration-container, .login-container {
+    width: 800px;
+    margin: auto;
+    display: block;
+    text-align: center;
+    border: 1px purple;
+    padding: 10px;
+    justify-content: flex-start;
+}
+
+.hide {
+    display: none;
+}
+
+.larger {
+    width: 280px;
+}
+
+.smaller {
+    width: 180px;
+}
+
+.btn-primary {
+    background-color: rebeccapurple;
+    border-color: purple;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+}
+
+.backlink {
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.form-control {
+    font-size: smaller;
+}
+
+.star {
+    text-align: center;
+    font-size: smaller;
+}
+
+.text-danger {
+    font-size: 10px;
+}
+
+.btn-primary:hover {
+    background-color: darkviolet;
+    border-color: purple;
+}
+
+.first-login{
+    text-align:center;
+}
