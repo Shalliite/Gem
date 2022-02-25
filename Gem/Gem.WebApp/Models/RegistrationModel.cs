@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gem.WebApp.Models
 {
-    public class RegistrationModel
+    public class RegistrationModel : BasePasswordModel
     {
         [Required]
         [RegularExpression("[a-zA-Z/'/-]+", ErrorMessage = "Enter valid first name. Allowed characters: (A-z).")]
@@ -31,17 +31,5 @@ namespace Gem.WebApp.Models
         [MaxLength(50, ErrorMessage = "Maximum e-mail length is 50 characters.")]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        [StringLength(18, MinimumLength = 8, ErrorMessage = "Password should be 8-18 characters long.")]
-        public string Password { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "Passwords do not match.")]
-        public string ConfirmPassword { get; set; }
     }
 }

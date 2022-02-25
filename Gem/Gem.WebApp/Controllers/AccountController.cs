@@ -25,6 +25,12 @@ namespace Gem.WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Login(LoginModel loginInfo)
         {
