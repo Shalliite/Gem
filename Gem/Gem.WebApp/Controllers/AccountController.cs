@@ -31,6 +31,12 @@ namespace Gem.WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Login(LoginModel loginInfo)
         {
@@ -75,6 +81,34 @@ namespace Gem.WebApp.Controllers
                 }
             }
             return View(registerDetails);
+        }
+
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordModel fpm)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_userRepository.IsRegistered(fpm.Email))
+                {
+                    // TODO: send email verification code and store that in the database
+                }
+                else
+                {
+                    ViewBag.Message = $"Cannot find user registered with {fpm.Email}";
+                    return View(fpm);
+                }
+            }
+            return View(fpm);
+        }
+
+        [HttpPost]
+        public IActionResult ResetPassword(ResetPasswordModel rpm)
+        {
+            if (ModelState.IsValid)
+            {
+                // TODO: Compare verification code to the what is stored in database
+            }
+            return View(rpm);
         }
     }
 }

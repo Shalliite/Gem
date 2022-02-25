@@ -2,7 +2,7 @@
 
 namespace Gem.WebApp.Models
 {
-    public class ForgotPasswordModel : BasePasswordModel
+    public class ForgotPasswordModel
     {
         [Required]
         [Display(Name = "Enter your email")]
