@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<div class="card-header">
+    <h3>Data Component</h3>
+    <button @onclick="Getdata" class="btn btn-dark">Click to Getdata</button>
+</div>
+
+<div class="card-body">
+    <br/>
+    <div class="@style">@Data</div>
+</div>
+
+@code{
+    [Parameter]
+    public string Data { get; set; } = string.Empty;
+    [Parameter]
+    public string style { get; set; }
+    private void Getdata()
+    {
+        Data = "I am Working";
+        style = "badge-success";
+    }
+
+}
