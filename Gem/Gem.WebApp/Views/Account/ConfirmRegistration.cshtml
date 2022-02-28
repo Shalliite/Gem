@@ -1,0 +1,27 @@
+﻿
+
+@model Gem.WebApp.Models.RegistrationConfirmationModel
+@{
+    ViewData["Title"] = "ConfirmRegistration";
+}
+
+<h1>You must confirm your email before logging in</h1>
+
+@using (Html.BeginForm("ConfirmRegistration", "Account", FormMethod.Post))
+{
+    @if (ViewBag.Message != null)
+    {
+        <label>@ViewBag.Message</label>
+    }
+    <br />
+    @Html.LabelFor(a => a.VerificationCode)
+    <br />
+    @Html.TextBoxFor(a => a.VerificationCode, null, new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(a => a.VerificationCode, "", new { @class = "text-danger"})
+    <br />
+
+    <input type="submit", value="Confirm registration" />
+
+    <br />
+}

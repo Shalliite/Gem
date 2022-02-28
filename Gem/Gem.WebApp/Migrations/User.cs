@@ -16,5 +16,7 @@ namespace Gem.WebApp.Migrations
         public string Email { get; set; }
         public DateTime LastSeen { get; set; }
         public string Password { get; set; }
+        public string? VerificationCode { get; set; }
+        public bool Verified { get; set; }
     }
 }

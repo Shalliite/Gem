@@ -18,7 +18,7 @@
         }
         <br />
 
-        @Html.LabelFor(a => a.FirstName)<text>*      </text>
+        @Html.LabelFor(a => a.FirstName) <text>*      </text>
         @Html.TextBoxFor(a => a.FirstName, null, new { @class = "form-control", placeholder="Enter First Name" })
         @Html.ValidationMessageFor(a => a.FirstName, "", new { @class = "text-danger"});        
         

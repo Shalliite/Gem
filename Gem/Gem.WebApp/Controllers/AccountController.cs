@@ -8,8 +8,11 @@ namespace Gem.WebApp.Controllers
     public class AccountController : Controller
     {
         private UserRepository _userRepository;
+        private ApplicationDbContext _adbc;
+        private string _email;
         public AccountController(ApplicationDbContext adbc)
         {
+            _adbc = adbc;
             _userRepository = new UserRepository(adbc);
         }
 
@@ -21,6 +24,12 @@ namespace Gem.WebApp.Controllers
 
         [HttpGet]
         public IActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ConfirmRegistration()
         {
             return View();
         }
@@ -44,20 +53,13 @@ namespace Gem.WebApp.Controllers
             {
                 MapUsers mapUsers = new MapUsers();
                 User user = mapUsers.Map(loginInfo);
-                if (_userRepository.IsRegistered(user.Email))
+                if (_userRepository.IsRegistered(user.Email) && _userRepository.IsPasswordCorrect(user.Email, user.Password))
                 {
-                    if (_userRepository.IsPasswordCorrect(user.Email, user.Password))
-                    {
-                        return RedirectToAction("Index", "Chat");
-                    }
-                    else
-                    {
-                        ViewBag.Message = "Password you entered is not correct";
-                    }
+                    //TODO: login and prompt to email confirmation if not confirmed.
                 }
                 else
                 {
-                    ViewBag.Message = "Cannot find any person registered with this email";
+                    ModelState.AddModelError(string.Empty, "Invalid e-mail and password combination");
                 }
             }
             return View(loginInfo);
@@ -70,6 +72,8 @@ namespace Gem.WebApp.Controllers
             {
                 MapUsers mapUsers = new MapUsers();
                 User user = mapUsers.Map(registerDetails);
+                user.Verified = false;
+                Verification verification = new Verification(_adbc);
                 if (_userRepository.IsRegistered(user.Email))
                 {
                     ViewBag.Message = $"{user.Email} is already registered!";
@@ -77,10 +81,30 @@ namespace Gem.WebApp.Controllers
                 else
                 {
                     _userRepository.Add(user);
+                    verification.SendCode(registerDetails.Email, "Account creation confirmation", "This is your code for registration confirmation:");
                     return RedirectToAction("Login");
                 }
             }
             return View(registerDetails);
+        }
+
+        [HttpPost]
+        public IActionResult ConfirmRegistration(RegistrationConfirmationModel rcm)
+        {
+            if (ModelState.IsValid)
+            {
+                Verification verification = new Verification(_adbc);
+                if (verification.CheckCode(_email, rcm.VerificationCode))
+                {
+                    //TODO: return to chat page after successful confirmation
+                    return View();
+                }
+                else
+                {
+                    ModelState.AddModelError(String.Empty, "Invalid verification code!");
+                }
+            }
+            return View(rcm);
         }
 
         [HttpPost]
@@ -90,11 +114,13 @@ namespace Gem.WebApp.Controllers
             {
                 if (_userRepository.IsRegistered(fpm.Email))
                 {
-                    // TODO: send email verification code and store that in the database
+                    Verification verification = new Verification(_adbc);
+                    _email = fpm.Email;
+                    verification.SendCode(fpm.Email, "Password reset code", "Hello, this is your password reset code:");
                 }
                 else
                 {
-                    ViewBag.Message = $"Cannot find user registered with {fpm.Email}";
+                    ModelState.AddModelError(string.Empty, $"Cannot find user registered with {fpm.Email}");
                     return View(fpm);
                 }
             }
@@ -106,7 +132,17 @@ namespace Gem.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                // TODO: Compare verification code to the what is stored in database
+                Verification verification = new Verification(_adbc);
+                if (verification.CheckCode(_email, rpm.VerificationCode))
+                {
+                    _userRepository.ChangePassword(_email, rpm.Password);
+                    _email = null;
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ModelState.AddModelError(String.Empty, "Invalid verification code!");
+                }
             }
             return View(rpm);
         }

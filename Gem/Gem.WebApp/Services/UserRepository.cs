@@ -66,5 +66,40 @@ namespace Gem.WebApp.Services
             }
             return false;
         }
+
+        public void ChangePassword(string email, string password)
+        {
+            if (IsRegistered(email))
+            {
+                dbc.Users.Where(x => x.Email == email).FirstOrDefault().Password = PasswordHash.Hash(password);
+                dbc.SaveChanges();
+            }
+        }
+
+        public void StoreVerificationCode(string code, string email)
+        {
+            if (IsRegistered(email))
+            {
+                dbc.Users.Where(x => x.Email == email).FirstOrDefault().VerificationCode = code;
+                dbc.SaveChanges();
+            }
+        }
+        public void DeleteVerificationCode(string email)
+        {
+            if (IsRegistered(email))
+            {
+                dbc.Users.Where(x => x.Email == email).FirstOrDefault().VerificationCode = null;
+                dbc.SaveChanges();
+            }
+        }
+
+        public string GetVerificationCode(string email)
+        {
+            if (IsRegistered(email))
+            {
+                return dbc.Users.Where(x => x.Email == email).FirstOrDefault().VerificationCode;
+            }
+            return null;
+        }
     }
 }
