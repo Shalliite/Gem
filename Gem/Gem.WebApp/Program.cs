@@ -1,9 +1,9 @@
-
+using Gem.WebApp.Hubs;
 using Gem.WebApp.Migrations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddSignalR();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -31,4 +31,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+app.MapHub<ChatHub>("/chatHub");
 app.Run();
