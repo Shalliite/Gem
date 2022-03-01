@@ -10,7 +10,15 @@
 
 <div class="content container-fluid bootstrap snippets bootdey">
       <div class="row row-broken">
-
+        <div class="col-sm-3 col-xs-12">
+          <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
+            <div class="chat-users">
+              <h6>Online</h6>
+                <div @*class="col-2"*@>Your Name</div>
+                <div @*class="col-4"*@><input type="text" id="userInput" /></div>
+            </div>
+          </div>
+        </div>
         <div class="col-sm-9 col-xs-12 chat" tabindex="5001">
           <div class="col-inside-lg decor-default">
             <div class="chat-body">
@@ -22,15 +30,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-3 col-xs-12">
-          <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
-            <div class="chat-users">
-              <h6>Online</h6>
-                <div @*class="col-2"*@>Your Name</div>
-                <div @*class="col-4"*@><input type="text" id="userInput" /></div>
-            </div>
-          </div>
-        </div>
+        
         <div class="answer-add">
                 <input type="text" id="messageInput" placeholder="Write a message">
             @*<div >*@
@@ -57,7 +57,8 @@
 }
 body{
     margin-top:20px;
-    /*background:#eee;*/
+    /*background:url("/gem-logo.png");*/
+    /*opacity: 0.2;*/
 }
 
 .chat-body{
@@ -67,7 +68,10 @@ body{
     overflow-x: hidden; 
     display: flex; 
     flex-direction: column-reverse;
+/*    background: url("/gem-logo.png") no-repeat center;*/
+    
 }
+
 .row.row-broken {
     padding-bottom: 0;
 }
@@ -105,9 +109,11 @@ body{
 .chat-body .answer-add {
    /* clear: both;*/
     position: relative;
-    margin: 20px -20px -20px;
+    margin: auto;
     padding: 20px;
     background: white;
+    text-align:center;
+
 }
 .chat-body .answer-add input {
     border: 1px solid purple;
