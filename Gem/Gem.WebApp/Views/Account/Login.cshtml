@@ -14,8 +14,9 @@
 {
     @if (ViewBag.Message != null)
     {
-        <label>@ViewBag.Message</label>
-    }    
+        <label class = "text-danger">@ViewBag.Message</label>
+    }   
+    <br/>
     @Html.LabelFor(a => a.Email)
     <br />
     @Html.TextBoxFor(a => a.Email, null, new { @class = "form-control" })      
