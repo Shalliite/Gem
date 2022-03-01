@@ -4,36 +4,182 @@
 @{
 }
 
-<h1>THIS WILL BE CHAT PAGE. Accessed only for registered users</h1>
-<h2>For now, just log out and don't waste your time here :-)</h2>
+<h1 class="hide">THIS WILL BE CHAT PAGE. Accessed only for registered users</h1>
+<h2 class="hide">For now, just log out and don't waste your time here :-)</h2>
 <a class="input-button" asp-area="" asp-controller="Account" asp-action="Login">Log Out</a>
 
-<div class="container">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-2">User</div>
-        <div class="col-4"><input type="text" id="userInput" /></div>
-    </div>
-    <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
+<div class="content container-fluid bootstrap snippets bootdey">
+      <div class="row row-broken">
+
+        <div class="col-sm-9 col-xs-12 chat" tabindex="5001">
+          <div class="col-inside-lg decor-default">
+            <div class="chat-body">
+              @*<h6>Gem Chat</h6>*@
+              @*<p>Message1</p>
+              <p>Message2</p>*@
+              <div id="messagesList"></div>
+
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
-</div>
+        <div class="col-sm-3 col-xs-12">
+          <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
+            <div class="chat-users">
+              <h6>Online</h6>
+                <div @*class="col-2"*@>Your Name</div>
+                <div @*class="col-4"*@><input type="text" id="userInput" /></div>
+            </div>
+          </div>
+        </div>
+        <div class="answer-add">
+                <input type="text" id="messageInput" placeholder="Write a message">
+            @*<div >*@
+                <input type="button" id="sendButton" value="Send Message" class="btn-primary" />
+            @*<</div>*@
+        </div>
+      </div>
+   
+ </div>
+
+ <style>
+
+#messagesList p{
+    color:white;
+    background-color:purple;
+    
+    display:block;
+    border: 1px solid purple;
+    border-radius:5px;
+    
+    inline-size: 300px;
+    overflow-wrap: break-word;
+    padding: 5px;
+}
+body{
+    margin-top:20px;
+    /*background:#eee;*/
+}
+
+.chat-body{
+    height: calc(100vh - 244px);
+    overflow:scroll;
+    outline: none; 
+    overflow-x: hidden; 
+    display: flex; 
+    flex-direction: column-reverse;
+}
+.row.row-broken {
+    padding-bottom: 0;
+}
+.col-inside-lg {
+    padding: 20px;
+}
+.chat {
+    height: calc(100vh - 200px);
+}
+.decor-default {
+    background-color: white;
+    border: 2px solid;
+    border-color: purple;
+    border-radius:5px;
+}
+.chat-users h6 {
+    font-size: 20px;
+    margin: 0 0 20px;
+    text-align:center;
+    font-weight:bold;
+}
+
+
+/*****************CHAT BODY *******************/
+.chat-body h6 {
+    font-size: 20px;
+    margin: 0 0 20px;
+    text-align:center;
+    font-weight:bold;
+    
+}
+
+
+/**************ADD FORM ***************/
+.chat-body .answer-add {
+   /* clear: both;*/
+    position: relative;
+    margin: 20px -20px -20px;
+    padding: 20px;
+    background: white;
+}
+.chat-body .answer-add input {
+    border: 1px solid purple;
+   /* background: none;*/
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 0;
+    color: purple;
+}
+.chat input {
+/*    -webkit-appearance: none;*/
+    border-radius: 1px;
+    border-color:purple;
+}
+/*.chat-body .answer-add .answer-btn-1 {
+    background: url("http://91.234.35.26/iwiki-admin/v1.0.0/admin/img/icon-40.png") 50% 50% no-repeat;
+    right: 56px;
+}*/
+/*.chat-body .answer-add .answer-btn {
+    display: block;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+}
+.chat-body .answer-add .answer-btn-2 {
+    background: url("http://91.234.35.26/iwiki-admin/v1.0.0/admin/img/icon-41.png") 50% 50% no-repeat;
+    right: 20px;
+}
+.chat input::-webkit-input-placeholder {
+   color: purple;
+}
+
+.chat input:-moz-placeholder { /* Firefox 18- */
+/*   color: #purple;  
+}
+
+.chat input::-moz-placeholder { */ /* Firefox 19+ */
+/*   color: #fff;  
+}
+
+.chat input:-ms-input-placeholder {  
+   color: purple;  
+}*/
+.chat input {
+   /* -webkit-appearance: none;*/
+    border-radius: 1px;
+}
+
+#input-message{
+    color:purple;
+    border-color:purple;
+}
+
+#messageInput{
+    width: 744px;
+}
+
+#sendButton{
+    border-color:purple;
+    border: 1px;
+    border-radius:5px;
+    width: 200px;
+    color: white;
+    height: 30px;
+}
+ </style>
+
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
